@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – DoubtConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .auth-wrapper {
+      min-height: calc(100vh - 150px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
+    .auth-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: var(--shadow-lg);
+    }
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .auth-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 1rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .demo-box {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .demo-box-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    .demo-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+      </a>
+      <ul id="nav-menu" class="nav-menu"></ul>
+      <div id="nav-actions" class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-icon"><i class="fas fa-sign-in-alt"></i></div>
+        <h1 style="font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em;">Welcome Back</h1>
+        <p class="text-muted" style="font-size: 0.9rem; margin-top: 0.25rem;">
+          Log in to your student or peer helper portal
+        </p>
+      </div>
+
+      <div id="error-alert" style="display: none; background: var(--danger-bg); color: #b91c1c; border-left: 4px solid var(--danger); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.875rem; margin-bottom: 1.25rem;"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">University Email</label>
+          <div style="position: relative;">
+            <input type="email" id="login-email" class="form-input" placeholder="e.g. student@lpu.in" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div style="position: relative;">
+            <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="login-btn" style="width: 100%; margin-top: 0.5rem;">
+          <i class="fas fa-arrow-right"></i> Sign In
+        </button>
+      </form>
+
+      <!-- Quick Demo Switcher for Evaluation / Viva -->
+      <div class="demo-box">
+        <div class="demo-box-title"><i class="fas fa-laptop-code"></i> Project Viva Quick Demo Logins</div>
+        <div class="demo-btn-group">
+          <button type="button" class="btn btn-outline btn-sm" onclick="demoLogin('student@lpu.in', 'Student@123')">
+            <i class="fas fa-user text-primary"></i> 1-Click: Demo Student (Aarav)
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="demoLogin('helper@lpu.in', 'Helper@123')">
+            <i class="fas fa-user-graduate text-warning"></i> 1-Click: Demo Helper (Priya)
+          </button>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+        Don't have an account? <a href="/register.html" style="font-weight: 600;">Register as Student / Helper</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already logged in, go to dashboard
+      if (Auth.isLoggedIn()) {
+        window.location.href = '/dashboard.html';
+        return;
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('expired')) {
+        showError('Your previous session expired. Please log in again.');
+      } else if (urlParams.get('registered')) {
+        API.showToast('Account registered! You can now log in.', 'success');
+      }
+
+      const form = document.getElementById('login-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        await performLogin(email, password);
+      });
+    });
+
+    async function performLogin(email, password) {
+      const btn = document.getElementById('login-btn');
+      hideError();
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging In...';
+
+      try {
+        const res = await API.post('/auth/login', { email, password });
+        Auth.setSession(res.token, res.user);
+        API.showToast('Logged in successfully!', 'success');
+        
+        setTimeout(() => {
+          const redirect = new URLSearchParams(window.location.search).get('redirect') || '/dashboard.html';
+          window.location.href = redirect;
+        }, 800);
+      } catch (err) {
+        showError(err.message);
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-arrow-right"></i> Sign In';
+      }
+    }
+
+    function demoLogin(email, password) {
+      document.getElementById('login-email').value = email;
+      document.getElementById('login-password').value = password;
+      performLogin(email, password);
+    }
+
+    function showError(msg) {
+      const alert = document.getElementById('error-alert');
+      alert.textContent = msg;
+      alert.style.display = 'block';
+    }
+
+    function hideError() {
+      const alert = document.getElementById('error-alert');
+      alert.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

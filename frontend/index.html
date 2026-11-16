@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoubtConnect – Peer Doubt Resolution Platform</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .hero {
+      padding: 5rem 1.5rem 4rem;
+      background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.08), transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.06), transparent 50%);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: 3.25rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-main);
+      max-width: 840px;
+      margin: 0 auto 1.25rem;
+      letter-spacing: -0.03em;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .features-section {
+      padding: 5rem 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3.5rem;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-focus);
+    }
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      position: relative;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.25rem;
+      }
+      .hero-description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+        <span class="brand-badge">LPU INT335</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu">
+        <!-- Injected via auth.js -->
+      </ul>
+
+      <div id="nav-actions" class="nav-actions">
+        <!-- Injected via auth.js -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-lightbulb"></i> INT335 Design Thinking CA2 Innovation
+    </div>
+    <h1 class="hero-title">
+      Never Let An Academic Doubt Get Buried in <span>WhatsApp Groups</span>
+    </h1>
+    <p class="hero-description">
+      Connect with knowledgeable peer explainers at Lovely Professional University in minutes. Post your course queries, collaborate 1-on-1 via real-time discussion, and master challenging concepts together.
+    </p>
+    <div class="hero-cta">
+      <a href="/register.html" class="btn btn-primary btn-lg">
+        <i class="fas fa-user-plus"></i> Join as Student or Helper
+      </a>
+      <a href="/browse-doubts.html" class="btn btn-outline btn-lg">
+        <i class="fas fa-search"></i> Browse Active Doubts
+      </a>
+    </div>
+  </header>
+
+  <!-- Project Problem & Design Thinking Context -->
+  <section class="features-section" style="background: white; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="section-header">
+      <span class="hero-badge"><i class="fas fa-bullseye"></i> Problem Statement</span>
+      <h2 class="section-title">Why DoubtConnect?</h2>
+      <p class="text-muted">
+        Students often get stuck while studying late at night and post queries in large batch WhatsApp groups. Their messages get drowned under hundreds of chats, and finding someone who can clearly explain the concept feels impossible.
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background: #fee2e2; color: #dc2626;">
+          <i class="fas fa-comment-slash"></i>
+        </div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">The Chat Group Bottleneck</h3>
+        <p class="text-muted" style="font-size: 0.95rem;">
+          WhatsApp and Telegram groups are noisy. Questions are overlooked, responses are disorganized, and there is no tracking of whether a doubt was ever resolved.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background: #e0e7ff; color: #4338ca;">
+          <i class="fas fa-user-check"></i>
+        </div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Verified Peer Matching</h3>
+        <p class="text-muted" style="font-size: 0.95rem;">
+          Find fellow students who have already mastered your specific course code (INT335, CSE316, CSE304) and are actively available to guide you.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" style="background: #d1fae5; color: #059669;">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Ratings & Mutual Recognition</h3>
+        <p class="text-muted" style="font-size: 0.95rem;">
+          Helper students build an academic reputation through star ratings, verified resolved stats, and authentic student reviews.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="features-section">
+    <div class="section-header">
+      <span class="hero-badge"><i class="fas fa-cogs"></i> Simple Workflow</span>
+      <h2 class="section-title">How DoubtConnect Works</h2>
+      <p class="text-muted">From getting stuck on a topic to celebrating resolved understanding in 4 streamlined steps.</p>
+    </div>
+
+    <div class="workflow-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Post Your Doubt</h4>
+        <p class="text-muted" style="font-size: 0.9rem;">Specify your course code, subject, topic, and urgency level with detailed problem context.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Discover Helpers</h4>
+        <p class="text-muted" style="font-size: 0.9rem;">Browse available peer mentors filterable by subject proficiency, or receive incoming help offers.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Collaborate in Real-Time</h4>
+        <p class="text-muted" style="font-size: 0.9rem;">Engage in focused 1-on-1 discussion room powered by Socket.IO with typing indicators and instant messaging.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Resolve & Rate</h4>
+        <p class="text-muted" style="font-size: 0.9rem;">Mark doubt as resolved, submit a 5-star rating, and reward your peer explainer with valuable feedback.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="features-section" style="padding-top: 1rem; padding-bottom: 4rem;">
+    <div style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: var(--radius-xl); padding: 3.5rem 2rem; text-align: center; color: white;">
+      <h2 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 0.75rem;">Ready to Ace Your Semester?</h2>
+      <p style="font-size: 1.1rem; opacity: 0.9; max-width: 580px; margin: 0 auto 2rem;">
+        Join DoubtConnect today. Test demo accounts with 1-click or register with your university student ID.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/login.html" class="btn btn-secondary btn-lg" style="background: white; color: var(--primary);">
+          <i class="fas fa-sign-in-alt"></i> Try Quick Demo Login
+        </a>
+        <a href="/register.html" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4);">
+          <i class="fas fa-user-plus"></i> Create Account
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-copy">
+        &copy; 2026 <strong>DoubtConnect</strong> &bull; INT335 Design Thinking Project &bull; Lovely Professional University
+      </div>
+      <div class="footer-badge">
+        <i class="fas fa-check-circle"></i> B.Tech CSE CA2 Project
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

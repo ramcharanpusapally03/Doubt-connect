@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – DoubtConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu"></ul>
+      <div id="nav-actions" class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title" id="welcome-message">Loading Dashboard...</h1>
+        <p class="page-subtitle">Your personalized peer learning and doubt resolution hub</p>
+      </div>
+      <div>
+        <a href="/browse-doubts.html" class="btn btn-outline btn-sm">
+          <i class="fas fa-search"></i> Browse All Doubts
+        </a>
+      </div>
+    </div>
+
+    <!-- Dynamic Content injected via dashboard.js -->
+    <div id="dashboard-content">
+      <div style="text-align: center; padding: 4rem 1rem;">
+        <i class="fas fa-spinner fa-spin fa-2x text-primary"></i>
+        <p style="margin-top: 1rem; color: var(--text-muted);">Fetching your academic updates from MongoDB...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-copy">
+        &copy; 2026 <strong>DoubtConnect</strong> &bull; Lovely Professional University &bull; INT335 Design Thinking
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
