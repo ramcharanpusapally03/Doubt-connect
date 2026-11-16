@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!currentDoubtId) {
     API.showToast('No doubt selected for discussion.', 'error');
-    setTimeout(() => (window.location.href = '/browse-doubts.html'), 1500);
+    setTimeout(() => (window.location.href = './browse-doubts.html'), 1500);
     return;
   }
 

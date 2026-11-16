@@ -219,7 +219,7 @@ window.openRequestModal = async (helperId, helperName) => {
       API.showToast('Help request sent successfully!', 'success');
       closeRequestModal();
       setTimeout(() => {
-        window.location.href = '/dashboard.html';
+        window.location.href = './dashboard.html';
       }, 1000);
     } catch (err) {
       API.showToast(err.message, 'error');

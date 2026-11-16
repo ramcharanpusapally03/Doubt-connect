@@ -4,6 +4,21 @@
 
 ---
 
+## 🏆 Official Checkpoints Master Portfolio (CP-1 to CP-7)
+All 7 project checkpoints mandated by the **INT335 Design Thinking Project Allocation & Implementation Guidelines** are fully completed, documented, and cross-referenced:
+
+| Checkpoint | Focus | Week | Evidence Portfolio |
+| :---: | :--- | :---: | :--- |
+| **CP-1** | **Project Approval** | Week 3 | [Annexure A & 5 Validation Questions](./checkpoints/CP1_PROJECT_APPROVAL.md) |
+| **CP-2** | **Empathy Research** | Week 5 | [8 Interview Records, 2 AEIOU Observations, N=38 Survey, Empathy Map](./checkpoints/CP2_EMPATHY_RESEARCH.md) |
+| **CP-3** | **Problem Definition** | Week 6 | [2 Personas, As-Is Journey Map, POV Statement, Final Problem Statement, 5 HMWs](./checkpoints/CP3_PROBLEM_DEFINITION.md) |
+| **CP-4** | **Ideas & Selection** | Week 7 | [32 Ideas Log across 4 Methods, 5 Themes, Weighted Screening Matrix](./checkpoints/CP4_IDEAS_AND_SELECTION.md) |
+| **CP-5** | **Prototype Ready** | Week 10 | [Paper to Full-Stack Evolution, 7-Step User Flow, MVP Definition, 5-User Test Plan](./checkpoints/CP5_PROTOTYPE_READY.md) |
+| **CP-6** | **Testing & Fixes** | Week 12 | [5 Silent Test Logs, 4-Quadrant FCM, Issue Severity List, Before/After Log, Re-Test](./checkpoints/CP6_TESTING_AND_FIXES.md) |
+| **CP-7** | **Final Showcase** | Week 14 | [22-Part Final Report, 12-Slide Presentation Script, Viva Guide & Annexure Audit](./checkpoints/CP7_FINAL_SHOWCASE_REPORT.md) |
+
+---
+
 ## 📌 1. Project Problem & Design Thinking Context
 
 ### The Real-World Problem

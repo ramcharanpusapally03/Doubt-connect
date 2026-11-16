@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Doubt – DoubtConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu"></ul>
+      <div id="nav-actions" class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    <div style="max-width: 760px; margin: 0 auto;">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title"><i class="fas fa-question-circle text-primary"></i> Post an Academic Doubt</h1>
+          <p class="page-subtitle">Describe where you are stuck to get connected with a peer explainer.</p>
+        </div>
+        <a href="./browse-doubts.html" class="btn btn-outline btn-sm">
+          <i class="fas fa-arrow-left"></i> Back to Doubts
+        </a>
+      </div>
+
+      <div class="card" style="padding: 2rem;">
+        <form id="post-doubt-form">
+          <div class="form-group">
+            <label class="form-label">Doubt Title *</label>
+            <input type="text" id="doubt-title" class="form-input" placeholder="e.g. How to derive POV statement from Empathy Map in INT335?" required maxlength="120">
+            <div class="form-help">Keep it clear and specific so peer helpers can identify it quickly.</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Subject *</label>
+              <select id="doubt-subject" class="form-select" required>
+                <option value="">-- Choose Subject --</option>
+                <option value="Design Thinking">Design Thinking (INT335)</option>
+                <option value="Operating Systems">Operating Systems (CSE316)</option>
+                <option value="Computer Networks">Computer Networks (CSE304)</option>
+                <option value="Python Programming">Python Programming (INT213)</option>
+                <option value="Database Systems">Database Systems (CSE320)</option>
+                <option value="Data Structures">Data Structures & Algorithms</option>
+                <option value="Web Development">Full Stack Web Development</option>
+                <option value="Mathematics">Discrete Mathematics</option>
+                <option value="Other">Other Academic Subject</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Course Code *</label>
+              <input type="text" id="doubt-course" class="form-input" placeholder="e.g. INT335, CSE316, CSE304" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Specific Topic / Module *</label>
+              <input type="text" id="doubt-topic" class="form-input" placeholder="e.g. Empathy Canvas, Banker's Algorithm, Subnetting" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Urgency / Priority *</label>
+              <select id="doubt-priority" class="form-select">
+                <option value="Low">Low (General study)</option>
+                <option value="Medium" selected>Medium (Upcoming CA / Homework)</option>
+                <option value="High">High (Exam / Test this week)</option>
+                <option value="Urgent">Urgent (Tomorrow's deadline)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Detailed Question & What You've Tried *</label>
+            <textarea id="doubt-description" class="form-textarea" placeholder="Paste your question, the error message, or describe what part of the concept isn't making sense..." style="min-height: 150px;" required></textarea>
+            <div class="form-help">Tip: Mention the specific slide, formula, or code output you are analyzing.</div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+            <a href="./browse-doubts.html" class="btn btn-outline">Cancel</a>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Publish Doubt
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-copy">
+        &copy; 2026 <strong>DoubtConnect</strong> &bull; Lovely Professional University
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/doubts.js"></script>
+</body>
+</html>

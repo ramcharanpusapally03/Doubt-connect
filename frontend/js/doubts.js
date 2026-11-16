@@ -59,7 +59,7 @@ function initPostDoubt(form) {
 
       API.showToast('Your doubt has been published!', 'success');
       setTimeout(() => {
-        window.location.href = `/chat.html?doubtId=${res.doubt._id}`;
+        window.location.href = `./chat.html?doubtId=${res.doubt._id}`;
       }, 1200);
     } catch (err) {
       API.showToast(err.message, 'error');
@@ -158,7 +158,7 @@ async function loadDoubts() {
           <span><i class="far fa-clock"></i> ${new Date(doubt.createdAt).toLocaleDateString()}</span>
         </div>
         <div class="doubt-actions">
-          <a href="/chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
+          <a href="./chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
             <i class="fas fa-comments"></i> Join Discussion
           </a>
           <button class="btn btn-outline btn-sm" onclick='showDoubtDetailsModal(${JSON.stringify(
@@ -168,7 +168,7 @@ async function loadDoubts() {
           </button>
           ${
             currentUser && currentUser.role === 'student' && currentUser._id === doubt.postedBy?._id && doubt.status === 'Open'
-              ? `<a href="/helpers.html?doubtId=${doubt._id}&subject=${encodeURIComponent(
+              ? `<a href="./helpers.html?doubtId=${doubt._id}&subject=${encodeURIComponent(
                   doubt.subject
                 )}" class="btn btn-secondary btn-sm">
                    <i class="fas fa-user-plus"></i> Request Helper
@@ -217,7 +217,7 @@ window.showDoubtDetailsModal = (doubt) => {
       </div>
       <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
         <button class="btn btn-outline" onclick="closeDoubtModal()">Close</button>
-        <a href="/chat.html?doubtId=${doubt._id}" class="btn btn-primary">
+        <a href="./chat.html?doubtId=${doubt._id}" class="btn btn-primary">
           <i class="fas fa-comments"></i> Enter Chat Room
         </a>
       </div>
@@ -256,8 +256,8 @@ async function initMyDoubts() {
           }</p>
           ${
             user.role === 'student'
-              ? `<a href="/post-doubt.html" class="btn btn-primary btn-sm">Post a Doubt</a>`
-              : `<a href="/browse-doubts.html" class="btn btn-primary btn-sm">Browse Open Doubts</a>`
+              ? `<a href="./post-doubt.html" class="btn btn-primary btn-sm">Post a Doubt</a>`
+              : `<a href="./browse-doubts.html" class="btn btn-primary btn-sm">Browse Open Doubts</a>`
           }
         </div>
       `;
@@ -280,7 +280,7 @@ async function initMyDoubts() {
           <span>Assigned Helper: <strong>${doubt.assignedHelper?.name || 'Unassigned'}</strong></span>
         </div>
         <div class="doubt-actions">
-          <a href="/chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
+          <a href="./chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
             <i class="fas fa-comments"></i> Chat Room
           </a>
           ${

@@ -32,8 +32,8 @@ const Auth = {
 
   requireAuth() {
     if (!this.isLoggedIn()) {
-      window.location.href = `/login.html?redirect=${encodeURIComponent(
-        window.location.pathname
+      window.location.href = `./login.html?redirect=${encodeURIComponent(
+        window.location.pathname.split('/').pop()
       )}`;
       return false;
     }
@@ -42,7 +42,7 @@ const Auth = {
 
   logout() {
     this.clearSession();
-    window.location.href = '/login.html?logged_out=true';
+    window.location.href = './login.html?logged_out=true';
   },
 
   // Setup standard navigation state across all pages
@@ -61,30 +61,32 @@ const Auth = {
 
     if (!navMenu || !navActions) return;
 
+    const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+
     if (user && this.isLoggedIn()) {
       // Dynamic navigation links based on user role
       navMenu.innerHTML = `
-        <li><a href="/dashboard.html" class="nav-link ${
-          window.location.pathname.includes('dashboard') ? 'active' : ''
+        <li><a href="./dashboard.html" class="nav-link ${
+          currentFile.includes('dashboard') ? 'active' : ''
         }"><i class="fas fa-th-large"></i> Dashboard</a></li>
-        <li><a href="/browse-doubts.html" class="nav-link ${
-          window.location.pathname.includes('browse-doubts') ? 'active' : ''
+        <li><a href="./browse-doubts.html" class="nav-link ${
+          currentFile.includes('browse-doubts') ? 'active' : ''
         }"><i class="fas fa-search"></i> Browse Doubts</a></li>
-        <li><a href="/helpers.html" class="nav-link ${
-          window.location.pathname.includes('helpers') ? 'active' : ''
+        <li><a href="./helpers.html" class="nav-link ${
+          currentFile.includes('helpers') ? 'active' : ''
         }"><i class="fas fa-user-friends"></i> Find Helpers</a></li>
-        <li><a href="/my-doubts.html" class="nav-link ${
-          window.location.pathname.includes('my-doubts') ? 'active' : ''
+        <li><a href="./my-doubts.html" class="nav-link ${
+          currentFile.includes('my-doubts') ? 'active' : ''
         }"><i class="fas fa-question-circle"></i> My Doubts</a></li>
       `;
 
       navActions.innerHTML = `
         ${
           user.role === 'student'
-            ? `<a href="/post-doubt.html" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Post Doubt</a>`
+            ? `<a href="./post-doubt.html" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Post Doubt</a>`
             : ''
         }
-        <a href="/profile.html" class="nav-user-chip" title="View Profile">
+        <a href="./profile.html" class="nav-user-chip" title="View Profile">
           <div class="user-avatar">${user.name ? user.name.charAt(0).toUpperCase() : 'U'}</div>
           <span>${user.name.split(' ')[0]}</span>
           <span class="badge ${user.role === 'helper' ? 'badge-in-progress' : 'badge-open'}" style="font-size: 0.65rem;">
@@ -102,19 +104,17 @@ const Auth = {
     } else {
       // Public / logged-out nav
       navMenu.innerHTML = `
-        <li><a href="/index.html" class="nav-link ${
-          window.location.pathname === '/' || window.location.pathname.includes('index')
-            ? 'active'
-            : ''
+        <li><a href="./index.html" class="nav-link ${
+          currentFile === '' || currentFile.includes('index') ? 'active' : ''
         }">Home</a></li>
-        <li><a href="/index.html#how-it-works" class="nav-link">How It Works</a></li>
-        <li><a href="/index.html#features" class="nav-link">Features</a></li>
-        <li><a href="/browse-doubts.html" class="nav-link">Public Doubts</a></li>
+        <li><a href="./index.html#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="./index.html#features" class="nav-link">Features</a></li>
+        <li><a href="./browse-doubts.html" class="nav-link">Public Doubts</a></li>
       `;
 
       navActions.innerHTML = `
-        <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
-        <a href="/register.html" class="btn btn-primary btn-sm">Sign Up</a>
+        <a href="./login.html" class="btn btn-outline btn-sm">Log In</a>
+        <a href="./register.html" class="btn btn-primary btn-sm">Sign Up</a>
       `;
     }
   },

@@ -93,7 +93,7 @@ async function renderStudentDashboard() {
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"><i class="fas fa-history text-primary"></i> Your Recent Doubts</h2>
-              <a href="/post-doubt.html" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Ask New Doubt</a>
+              <a href="./post-doubt.html" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Ask New Doubt</a>
             </div>
             <div id="student-doubts-list">
               ${
@@ -103,7 +103,7 @@ async function renderStudentDashboard() {
                     <div class="empty-state-icon"><i class="fas fa-folder-open"></i></div>
                     <div class="empty-state-title">No Doubts Posted Yet</div>
                     <p class="empty-state-text">Got stuck on an assignment, code problem, or design thinking concept? Post your doubt to get quick help.</p>
-                    <a href="/post-doubt.html" class="btn btn-primary btn-sm">Post Your First Doubt</a>
+                    <a href="./post-doubt.html" class="btn btn-primary btn-sm">Post Your First Doubt</a>
                   </div>
                 `
                   : myDoubts
@@ -123,7 +123,7 @@ async function renderStudentDashboard() {
                         <span><i class="far fa-clock"></i> ${formatTime(doubt.createdAt)}</span>
                       </div>
                       <div class="doubt-actions">
-                        <a href="/chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
+                        <a href="./chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
                           <i class="fas fa-comments"></i> Open Discussion
                         </a>
                         ${
@@ -148,7 +148,7 @@ async function renderStudentDashboard() {
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"><i class="fas fa-star text-warning"></i> Available Peer Helpers</h2>
-              <a href="/helpers.html" class="btn btn-outline btn-sm">View All</a>
+              <a href="./helpers.html" class="btn btn-outline btn-sm">View All</a>
             </div>
             <div class="helpers-compact-list">
               ${
@@ -177,7 +177,7 @@ async function renderStudentDashboard() {
                           .map((s) => `<span class="subject-pill">${s}</span>`)
                           .join('')}
                       </div>
-                      <a href="/helpers.html" class="btn btn-secondary btn-sm" style="width: 100%;">
+                      <a href="./helpers.html" class="btn btn-secondary btn-sm" style="width: 100%;">
                         Request Help
                       </a>
                     </div>
@@ -302,14 +302,14 @@ async function renderHelperDashboard() {
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"><i class="fas fa-comments text-primary"></i> Active Discussions</h2>
-              <a href="/browse-doubts.html" class="btn btn-outline btn-sm">Explore Open Doubts</a>
+              <a href="./browse-doubts.html" class="btn btn-outline btn-sm">Explore Open Doubts</a>
             </div>
             <div id="active-doubts-list">
               ${
                 activeHelped.length === 0
                   ? `<div class="empty-state" style="padding: 1.5rem;">
                        <p class="text-muted">No ongoing doubt sessions. Browse open doubts to assist your peers!</p>
-                       <a href="/browse-doubts.html" class="btn btn-primary btn-sm">Find Doubts to Solve</a>
+                       <a href="./browse-doubts.html" class="btn btn-primary btn-sm">Find Doubts to Solve</a>
                      </div>`
                   : activeHelped
                       .map(
@@ -326,7 +326,7 @@ async function renderHelperDashboard() {
                         <span>Student: <strong>${doubt.postedBy?.name || 'Student'}</strong></span>
                       </div>
                       <div class="doubt-actions">
-                        <a href="/chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
+                        <a href="./chat.html?doubtId=${doubt._id}" class="btn btn-primary btn-sm">
                           <i class="fas fa-comments"></i> Enter Discussion
                         </a>
                       </div>
@@ -344,7 +344,7 @@ async function renderHelperDashboard() {
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"><i class="fas fa-id-badge text-primary"></i> Your Helper Status</h2>
-              <a href="/profile.html" class="btn btn-outline btn-sm">Edit</a>
+              <a href="./profile.html" class="btn btn-outline btn-sm">Edit</a>
             </div>
             <div style="margin-bottom: 1.25rem;">
               <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem;">Current Availability:</div>
@@ -361,7 +361,7 @@ async function renderHelperDashboard() {
                   .join('')}
               </div>
             </div>
-            <a href="/profile.html" class="btn btn-secondary btn-sm" style="width: 100%;">
+            <a href="./profile.html" class="btn btn-secondary btn-sm" style="width: 100%;">
               <i class="fas fa-sliders-h"></i> Update Subjects & Status
             </a>
           </div>
