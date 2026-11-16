@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="dcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background with rounded corners -->
+  <rect width="64" height="64" rx="16" fill="url(#dcGrad)"/>
+  <!-- Mortarboard Top -->
+  <g filter="url(#shadow)">
+    <polygon points="32,15 54,26 32,37 10,26" fill="#FFFFFF"/>
+    <!-- Mortarboard Base -->
+    <path d="M19,31.5 L19,41 C19,45.5 24.8,48 32,48 C39.2,48 45,45.5 45,41 L45,31.5 L32,38 Z" fill="#FFFFFF" opacity="0.95"/>
+    <!-- Tassel Button & Cord -->
+    <circle cx="32" cy="26" r="2" fill="#FBBF24"/>
+    <path d="M33,26 Q46,27 48,34 L48,43" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="48" cy="44" r="2.2" fill="#FBBF24"/>
+  </g>
+</svg>
