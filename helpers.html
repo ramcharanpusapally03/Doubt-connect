@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Peer Helpers – DoubtConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu"></ul>
+      <div id="nav-actions" class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title"><i class="fas fa-user-friends text-primary"></i> Available Peer Helpers</h1>
+        <p class="page-subtitle" id="helpers-count">Connect with student mentors verified in specific courses</p>
+      </div>
+      <div>
+        <a href="./my-doubts.html" class="btn btn-outline btn-sm">
+          <i class="fas fa-question-circle"></i> My Doubts
+        </a>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="filter-inputs">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search-helpers" class="form-input" placeholder="Search by name, subject, or skills...">
+        </div>
+
+        <select id="filter-helper-subject" class="form-select" style="max-width: 220px;">
+          <option value="All">All Subjects</option>
+          <option value="Design Thinking">Design Thinking (INT335)</option>
+          <option value="Operating Systems">Operating Systems (CSE316)</option>
+          <option value="Computer Networks">Computer Networks (CSE304)</option>
+          <option value="Python Programming">Python Programming (INT213)</option>
+          <option value="Database Systems">Database Systems</option>
+          <option value="Data Structures">Data Structures</option>
+        </select>
+
+        <select id="filter-helper-avail" class="form-select" style="max-width: 170px;">
+          <option value="All">All Statuses</option>
+          <option value="Available">🟢 Available</option>
+          <option value="Busy">🟡 Busy</option>
+          <option value="Offline">⚪ Offline</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Helpers Grid -->
+    <div class="helpers-grid" id="helpers-grid">
+      <!-- Populated dynamically via helpers.js -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-copy">
+        &copy; 2026 <strong>DoubtConnect</strong> &bull; Lovely Professional University
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/helpers.js"></script>
+</body>
+</html>

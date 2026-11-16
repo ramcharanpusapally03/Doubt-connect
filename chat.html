@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doubt Discussion – DoubtConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="stylesheet" href="./css/chat.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+      </a>
+
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul id="nav-menu" class="nav-menu"></ul>
+      <div id="nav-actions" class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-content" style="padding-top: 1.25rem;">
+    <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+      <a href="./dashboard.html" class="btn btn-outline btn-sm">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+      </a>
+      <span class="badge badge-open" style="font-size: 0.8rem;">
+        <i class="fas fa-bolt text-warning"></i> Real-Time Discussion
+      </span>
+    </div>
+
+    <!-- Chat Workspace -->
+    <div class="chat-container">
+      <!-- Left: Doubt Context & Participants -->
+      <aside class="chat-sidebar" id="chat-sidebar-content">
+        <div style="text-align: center; padding: 2rem 0; color: var(--text-muted);">
+          <i class="fas fa-spinner fa-spin"></i> Loading details...
+        </div>
+      </aside>
+
+      <!-- Right: Main Chat Stream -->
+      <section class="chat-main">
+        <!-- Room Header -->
+        <div class="chat-header">
+          <div class="chat-header-info" id="chat-header-info">
+            <div class="chat-header-title">Loading discussion...</div>
+          </div>
+          <div id="chat-header-actions"></div>
+        </div>
+
+        <!-- Messages Stream -->
+        <div class="chat-messages" id="chat-messages">
+          <div style="margin: auto; text-align: center; color: var(--text-muted);">
+            <i class="fas fa-spinner fa-spin fa-2x text-primary"></i>
+            <p style="margin-top: 0.5rem;">Connecting to real-time chat room...</p>
+          </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="typing-indicator" id="typing-indicator"></div>
+
+        <!-- Message Composer -->
+        <form class="chat-input-bar" id="chat-send-form">
+          <input type="text" id="chat-input" class="chat-input" placeholder="Type your academic question, response or formula..." autocomplete="off" required>
+          <button type="submit" class="chat-send-btn" title="Send Message">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-copy">
+        &copy; 2026 <strong>DoubtConnect</strong> &bull; Lovely Professional University
+      </div>
+    </div>
+  </footer>
+
+  <!-- Socket.IO client script automatically provided by server -->
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/chat.js"></script>
+</body>
+</html>

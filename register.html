@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – DoubtConnect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .auth-wrapper {
+      min-height: calc(100vh - 150px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+    .auth-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 620px;
+      box-shadow: var(--shadow-lg);
+    }
+    .role-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .role-option {
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--bg-surface);
+    }
+    .role-option.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .role-option i {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: var(--text-muted);
+    }
+    .role-option.selected i {
+      color: var(--primary);
+    }
+    .role-option .role-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .role-option .role-desc {
+      font-size: 0.775rem;
+      color: var(--text-muted);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="nav-brand">
+        <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
+        <span>DoubtConnect</span>
+      </a>
+      <ul id="nav-menu" class="nav-menu"></ul>
+      <div id="nav-actions" class="nav-actions"></div>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em;">Create Your Account</h1>
+        <p class="text-muted" style="font-size: 0.925rem; margin-top: 0.25rem;">
+          Join Lovely Professional University's peer learning network
+        </p>
+      </div>
+
+      <div id="reg-error" style="display: none; background: var(--danger-bg); color: #b91c1c; border-left: 4px solid var(--danger); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.875rem; margin-bottom: 1.25rem;"></div>
+
+      <form id="register-form">
+        <!-- Role Selection -->
+        <label class="form-label" style="margin-bottom: 0.6rem;">Select Your Primary Role</label>
+        <div class="role-selector">
+          <div class="role-option selected" id="role-student-btn" onclick="selectRole('student')">
+            <i class="fas fa-user-graduate"></i>
+            <div class="role-title">Student</div>
+            <div class="role-desc">Ask doubts & find peer mentors</div>
+          </div>
+          <div class="role-option" id="role-helper-btn" onclick="selectRole('helper')">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <div class="role-title">Peer Helper</div>
+            <div class="role-desc">Guide students & earn ratings</div>
+          </div>
+        </div>
+        <input type="hidden" id="selected-role" value="student">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="reg-name" class="form-input" placeholder="e.g. Aarav Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Student Registration ID</label>
+            <input type="text" id="reg-studentid" class="form-input" placeholder="e.g. 12204561" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">University Email</label>
+            <input type="email" id="reg-email" class="form-input" placeholder="e.g. name@lpu.in" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password (min 6 characters)</label>
+            <input type="password" id="reg-password" class="form-input" placeholder="Create a secure password" minlength="6" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Course / Branch</label>
+            <input type="text" id="reg-course" class="form-input" value="B.Tech CSE" placeholder="e.g. B.Tech CSE" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Year of Study</label>
+            <select id="reg-year" class="form-select">
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3" selected>3rd Year</option>
+              <option value="4">4th Year</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Conditional Helper Fields -->
+        <div id="helper-extra-fields" style="display: none; background: #f8fafc; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label">Subjects You Can Explain (comma separated)</label>
+            <input type="text" id="reg-subjects" class="form-input" placeholder="e.g. Design Thinking, Operating Systems, Computer Networks">
+            <div class="form-help">Students with doubts in these subjects will be matched with you.</div>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Short Helper Bio</label>
+            <textarea id="reg-bio" class="form-textarea" placeholder="Tell peers how you can help them (e.g. Cleared OS with A+ grade, experienced with INT335 prototypes)..." style="min-height: 80px;"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="reg-btn" style="width: 100%; margin-top: 0.75rem;">
+          <i class="fas fa-user-plus"></i> Create Account
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted);">
+        Already registered? <a href="./login.html" style="font-weight: 600;">Sign In here</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+  <script>
+    function selectRole(role) {
+      document.getElementById('selected-role').value = role;
+      const studentBtn = document.getElementById('role-student-btn');
+      const helperBtn = document.getElementById('role-helper-btn');
+      const extraFields = document.getElementById('helper-extra-fields');
+
+      if (role === 'helper') {
+        helperBtn.classList.add('selected');
+        studentBtn.classList.remove('selected');
+        extraFields.style.display = 'block';
+      } else {
+        studentBtn.classList.add('selected');
+        helperBtn.classList.remove('selected');
+        extraFields.style.display = 'none';
+      }
+    }
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errBox = document.getElementById('reg-error');
+      const btn = document.getElementById('reg-btn');
+      errBox.style.display = 'none';
+
+      const name = document.getElementById('reg-name').value.trim();
+      const studentId = document.getElementById('reg-studentid').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value;
+      const course = document.getElementById('reg-course').value.trim();
+      const year = document.getElementById('reg-year').value;
+      const role = document.getElementById('selected-role').value;
+      const subjects = document.getElementById('reg-subjects').value.trim();
+      const bio = document.getElementById('reg-bio').value.trim();
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+
+      try {
+        const res = await API.post('/auth/register', {
+          name,
+          studentId,
+          email,
+          password,
+          course,
+          year,
+          role,
+          subjects,
+          bio,
+        });
+
+        Auth.setSession(res.token, res.user);
+        API.showToast('Account created successfully!', 'success');
+        setTimeout(() => {
+          window.location.href = './dashboard.html';
+        }, 1000);
+      } catch (err) {
+        errBox.textContent = err.message;
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+      }
+    });
+  </script>
+</body>
+</html>
